@@ -28,8 +28,8 @@ const winningCombinations = [
     [3, 5, 7]
 ];
 
-const placeSymbol=( position, symbol )=> {
-    board[position] = symbol.toUpperCase();
+const placeSymbol = ( position, symbol )=> {
+    board[position] = symbol;
 }
 
 const printBoard = () => {
@@ -43,25 +43,26 @@ const printBoard = () => {
 }
 
 
-//Check input for no letters & empty sqaures 
-const isInt=( value ) =>  {
+//Check input for no letters & empty squares 
+const isInt = ( value ) =>  {
     let x;
     if (isNaN( value )) {
         return false;
     }
     x = parseFloat( value );
-    return ( x | 0 ) === x;
+    return ( x || 0 ) === x;
 }
 
+//Check for empty sqaure and number between 0-9
 const validateMove = ( position ) => {
-    if (isInt( position ) === true && board[position] === ' ') {
+    if (isInt( position ) && board[position] === ' ' && (position >= 0 && position <= 9)) {
         return true;
     }
     return false;
 }
 
 
-// Check to see if last move made 3 in a row
+// Check to see if last move matched 3 integers in a winningCombination array
 const checkWin = ( player ) => {
     for (let i = 0; i < winningCombinations.length; i++) {
         let symbolCount = 0;
@@ -77,18 +78,35 @@ const checkWin = ( player ) => {
     return false;
 }
 
+const checkDrawn = () => {
+    const values = Object.values(board)
+    for (let i = 0; i < values.length; i++){
+        if (values[i] === " "){
+            return false
+        }
+    }
+    return true
+}
+
+
 const playTurn = ( player ) => {
 
     console.log(chalk.green(`${player}'s Turn To Play`));
     prompt.start();
     prompt.get(['position'], (error, result) => {
 
-        if (validateMove( result.position) === true ) {
+        if (validateMove( result.position )) {
             placeSymbol( result.position, player );
             printBoard();
-            if (checkWin( player ) === true) {
+            
+            if (checkWin( player )) {
                 console.log(chalk.black.bgYellow.bold(`**  ${player} Is The Winner!!  **`));
                 console.log(chalk.black.bgYellow.bold(`**  node tic.js to play again  **`));
+                return;
+            }
+            if(checkDrawn()){
+                console.log(chalk.black.bgRed.bold(`**  Great Game! Thats a Draw  **`));
+                console.log(chalk.black.bgRed.bold(`**  node tic.js to play again  **`));
                 return;
             }
             if (player === 'X') {
@@ -97,7 +115,7 @@ const playTurn = ( player ) => {
                 playTurn( 'X' );
             }
         } else {
-            console.log(chalk.red('Oh No!That square is taken, please pick another one...'));
+            console.log(chalk.red('Oh No! That square is taken, please pick another one...'));
             playTurn( player );
         }
     });
