@@ -43,17 +43,15 @@ const printBoard = () => {
 }
 
 
-//Check input for no letters & empty squares 
+//Move Validation - Integer Only & Empty Sqaure
 const isInt = ( value ) =>  {
-    let x;
     if (isNaN( value )) {
         return false;
     }
-    x = parseFloat( value );
+    let x = parseFloat( value );
     return ( x || 0 ) === x;
 }
 
-//Check for empty sqaure and number between 0-9
 const validateMove = ( position ) => {
     if (isInt( position ) && board[position] === ' ' && (position >= 0 && position <= 9)) {
         return true;
@@ -78,6 +76,7 @@ const checkWin = ( player ) => {
     return false;
 }
 
+// Check to see if there are any remaining blank sqaures available
 const checkDrawn = () => {
     const values = Object.values(board)
     for (let i = 0; i < values.length; i++){
@@ -120,7 +119,6 @@ const playTurn = ( player ) => {
         }
     });
 }
-
 
 //Start Game
 console.log(chalk.blue(`\nLet's Play! Enter A Number 1-9 To Place Your Symbols...\nGet 3 In A Row - X To Play First...`))
