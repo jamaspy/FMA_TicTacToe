@@ -1,0 +1,23 @@
+{
+  "name": "mfa_tictactoe",
+  "version": "1.0.0",
+  "description": "MFA_TicTacToe Command Line Game",
+  "main": "tic.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jamaspy/FMA_TicTacToe.git"
+  },
+  "author": "James Aspinall",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jamaspy/FMA_TicTacToe/issues"
+  },
+  "homepage": "https://github.com/jamaspy/FMA_TicTacToe#readme",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "prompt": "^1.0.0"
+  }
+}
