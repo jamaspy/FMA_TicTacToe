@@ -1,4 +1,3 @@
-
 const prompt = require( 'prompt' );
 const chalk = require( 'chalk' );
 
@@ -42,8 +41,15 @@ const printBoard = () => {
     `)
 }
 
-//Move Validation
-//Input has to be an integer
+const resetBoard = () => {
+    for (let i = 1; i <= 9; i++){
+        board[i] = ' ';
+    }
+    return board;
+}
+
+// Move Validation
+// Input has to be an integer
 // 0 is integer but the board starts at 1 
 const isInt = ( value ) =>  {
     if (isNaN( value )) {
@@ -56,7 +62,7 @@ const isInt = ( value ) =>  {
 //Valid input is number 1-9, placed in an empty sqaure on the board
 const validateMove = ( square ) => {
     if (isInt( square ) && board[square] === ' ' && (square >= 1 && square <= 9)) {
-        console.log("\nNice Move!")
+        console.log("\nNice Move!");
         return true;
     }
     return false;
@@ -81,13 +87,30 @@ const checkWin = ( player ) => {
 // Iterate over the board object to check for empty string values ("Empty Squares")
 // If there are empty sqaures it can not be a draw
 const checkDrawn = () => {
-    const values = Object.values(board)
+    const values = Object.values(board);
     for (let i = 0; i < values.length; i++){
         if (values[i] === " "){
-            return false
+            return false;
         }
     }
-    return true
+    return true;
+}
+
+//Clears the board object, prints the empty board, starts game play with Player X
+const playAgain = () => {
+    console.log("Would you like to play again? Enter Y or N")
+    prompt.start();
+    prompt.get(['playAgain'], (error, result) => {
+        if (result.playAgain === 'Y'){
+            resetBoard();
+            console.log(chalk.green.bold(`\nExcellent, lets play again`))
+            printBoard();
+            playTurn( 'X' )
+        }else{
+            console.log(chalk.yellow.bold(`\nGoodbye Humans\n`))
+            return
+        }
+    });
 }
 
 const playTurn = ( player ) => {
@@ -101,13 +124,13 @@ const playTurn = ( player ) => {
             
             if (checkWin( player )) {
                 console.log(chalk.black.bgYellow.bold(`**  ${player} Is The Winner!!  **`));
-                console.log(chalk.black.bgYellow.bold(`**  node tic.js to play again  **`));
+                playAgain();
                 return;
             }
 
             if(checkDrawn()){
                 console.log(chalk.black.bgRed.bold(`**  Thats a Draw! Great Game!  **`));
-                console.log(chalk.black.bgRed.bold(`**  node tic.js to play again  **`));
+                playAgain();
                 return;
             }
 
@@ -135,4 +158,4 @@ console.log(`
     7 | 8 | 9
     `);
 
-playTurn('X');
+playTurn( 'X' );
