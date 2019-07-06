@@ -48,8 +48,8 @@ const resetBoard = () => {
     return board;
 }
 
-// Move Validation
-// Input has to be an integer
+// Input Validation
+// Has to be an integer
 // 0 is integer but the board starts at 1 
 const isInt = ( value ) =>  {
     if (isNaN( value )) {
@@ -59,7 +59,7 @@ const isInt = ( value ) =>  {
     return ( num || 0 ) === num;
 }
 
-//Valid input is number 1-9, placed in an empty sqaure on the board
+// Valid input is integer 1-9, placed in an empty sqaure on the board
 const validateMove = ( square ) => {
     if (isInt( square ) && board[square] === ' ' && (square >= 1 && square <= 9)) {
         console.log("\nNice Move!");
@@ -96,7 +96,8 @@ const checkDrawn = () => {
     return true;
 }
 
-//Clears the board object, prints the empty board, starts game play with Player X
+// Clears the board object, prints the empty board, starts game play with Player X
+// Or returns to quit program
 const playAgain = () => {
     console.log("Would you like to play again? Enter Y or N")
     prompt.start();
@@ -148,7 +149,7 @@ const playTurn = ( player ) => {
 
 //Start Game
 console.log(chalk.blue.bold(`\nWelcome To Future Makes Academy TicTacToe!`)) 
-console.log(chalk.blue(`\nBelow Is A Diagram Of Your Board \nEnter A Number 1-9 To Place Your Symbols In The Corresponding Square...\nThe Aim Is To Get 3 In A Row - Vertically, Horizontally OR Diagonally \n\nX Always To Play First...`))
+console.log(chalk.blue(`\nBelow Is A Diagram Of Your Board \nEnter A Number 1-9 To Place Your Symbols In The Corresponding Square.\nThe Aim Is To Get 3 In A Row - Vertically, Horizontally OR Diagonally \n\nX Always To Play First...`))
 
 console.log(`
     1 | 2 | 3
