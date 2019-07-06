@@ -28,8 +28,8 @@ const winningCombinations = [
     [3, 5, 7]
 ];
 
-const placeSymbol = ( position, symbol )=> {
-    board[position] = symbol;
+const placeSymbol = ( square, symbol )=> {
+    board[square] = symbol;
 }
 
 const printBoard = () => {
@@ -42,23 +42,25 @@ const printBoard = () => {
     `)
 }
 
-
-//Move Validation - Integer Only & Empty Sqaure
+//Move Validation
+//Input has to be an integer
+// 0 is integer but the board starts at 1 
 const isInt = ( value ) =>  {
     if (isNaN( value )) {
         return false;
     }
-    let x = parseFloat( value );
-    return ( x || 0 ) === x;
+    let num = Number( value );
+    return ( num || 0 ) === num;
 }
 
-const validateMove = ( position ) => {
-    if (isInt( position ) && board[position] === ' ' && (position >= 0 && position <= 9)) {
+//Valid input is number 1-9, placed in an empty sqaure on the board
+const validateMove = ( square ) => {
+    if (isInt( square ) && board[square] === ' ' && (square >= 1 && square <= 9)) {
+        console.log("\nNice Move!")
         return true;
     }
     return false;
 }
-
 
 // Check to see if last move matched 3 integers in a winningCombination array
 const checkWin = ( player ) => {
@@ -76,7 +78,8 @@ const checkWin = ( player ) => {
     return false;
 }
 
-// Check to see if there are any remaining blank sqaures available
+// Iterate over the board object to check for empty string values ("Empty Squares")
+// If there are empty sqaures it can not be a draw
 const checkDrawn = () => {
     const values = Object.values(board)
     for (let i = 0; i < values.length; i++){
@@ -87,15 +90,13 @@ const checkDrawn = () => {
     return true
 }
 
-
 const playTurn = ( player ) => {
-
     console.log(chalk.green(`${player}'s Turn To Play`));
     prompt.start();
-    prompt.get(['position'], (error, result) => {
+    prompt.get(['square'], (error, result) => {
 
-        if (validateMove( result.position )) {
-            placeSymbol( result.position, player );
+        if (validateMove( result.square )) {
+            placeSymbol( result.square, player );
             printBoard();
             
             if (checkWin( player )) {
@@ -103,25 +104,28 @@ const playTurn = ( player ) => {
                 console.log(chalk.black.bgYellow.bold(`**  node tic.js to play again  **`));
                 return;
             }
+
             if(checkDrawn()){
-                console.log(chalk.black.bgRed.bold(`**  Great Game! Thats a Draw  **`));
+                console.log(chalk.black.bgRed.bold(`**  Thats a Draw! Great Game!  **`));
                 console.log(chalk.black.bgRed.bold(`**  node tic.js to play again  **`));
                 return;
             }
-            if (player === 'X') {
+
+            if ( player === 'X' ) {
                 playTurn( 'O' );
             } else {
                 playTurn( 'X' );
             }
         } else {
-            console.log(chalk.red('Oh No! That square is taken, please pick another one...'));
+            console.log(chalk.red.bold(`OOPS! Invalid Input, please enter a number 1-9 for an empty square on the board`));
             playTurn( player );
         }
     });
 }
 
 //Start Game
-console.log(chalk.blue(`\nLet's Play! Enter A Number 1-9 To Place Your Symbols...\nGet 3 In A Row - X To Play First...`))
+console.log(chalk.blue.bold(`\nWelcome To Future Makes Academy TicTacToe!`)) 
+console.log(chalk.blue(`\nBelow Is A Diagram Of Your Board \nEnter A Number 1-9 To Place Your Symbols In The Corresponding Square...\nThe Aim Is To Get 3 In A Row - Vertically, Horizontally OR Diagonally \n\nX Always To Play First...`))
 
 console.log(`
     1 | 2 | 3
