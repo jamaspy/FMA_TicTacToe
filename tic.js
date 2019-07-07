@@ -1,17 +1,16 @@
 const prompt = require( 'prompt' );
 const chalk = require( 'chalk' );
 
-let board = {
-    1: ' ',
-    2: ' ',
-    3: ' ',
-    4: ' ',
-    5: ' ',
-    6: ' ',
-    7: ' ',
-    8: ' ',
-    9: ' '
+
+let board = {};
+
+const resetBoard = () => {
+    for (let i = 1; i <= 9; i++){
+        board[i] = ' ';
+    };
 };
+
+resetBoard();
 
 const winningCombinations = [
     // Horizontal
@@ -41,32 +40,10 @@ const printBoard = () => {
     `)
 }
 
-const resetBoard = () => {
-    for (let i = 1; i <= 9; i++){
-        board[i] = ' ';
-    }
-    return board;
-}
-
 // Input Validation
-// Has to be an integer
-// 0 is integer but the board starts at 1 
-const isInt = ( value ) =>  {
-    if (isNaN( value )) {
-        return false;
-    }
-    let num = Number( value );
-    return ( num || 0 ) === num;
-}
-
-// Valid input is integer 1-9, placed in an empty sqaure on the board
-const validateMove = ( square ) => {
-    if (isInt( square ) && board[square] === ' ' && (square >= 1 && square <= 9)) {
-        console.log("\nNice Move!");
-        return true;
-    }
-    return false;
-}
+// Input is integer 1-9 && that the board value is an empty string
+const validateMove = square  => 
+    board[square] === ' ' && /[1-9]/.test(square); 
 
 // Check to see if last move matched 3 integers in a winningCombination array
 const checkWin = ( player ) => {
@@ -123,6 +100,7 @@ const playTurn = ( player ) => {
 
         if (validateMove( result.square )) {
             placeSymbol( result.square, player );
+            console.log("\nNice Move!");
             printBoard();
             
             if (checkWin( player )) {
