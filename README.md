@@ -41,4 +41,39 @@ Once you are up to speed with the assumptions
 
 * The game ends when one player gets 3 in a row OR all 9 squares are filled and a draw is called
 
+### This is the grid (use the number keys to place the X's & O's)
+```
+1 | 2 | 3
+---------
+4 | 5 | 6
+---------
+7 | 8 | 9
+```
+### Vertical Win
+```
+X | O |  
+---------
+X | O |  
+---------
+X |   |  
+```
+### Horizontal Win
+```
+X |   |  
+---------
+O | O | O  
+---------
+X |   |  
+```
+### Diagonal Win
+```
+X |   |  
+---------
+O | X | O  
+---------
+  |   | X 
+```
+
 ## How It Works
+
+
