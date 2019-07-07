@@ -76,4 +76,18 @@ O | X | O
 
 ## How It Works
 
+* The board is simulated by an object with numerical keys (1-9) and empty string values (empty squares). There are 8 possible 'winning combinations' in a 3 x 3 game of tic tac toe. The combinations are stored as arrays in an array.
+
+* I have focused on my functions having single responsibilities and naming my variables as descriptively as possible to make the code as readable and maintainable as possible. When the game starts, the individual functions are called in the main `playTurn()`. 
+
+* An a packge called [`prompt`](https://www.npmjs.com/package/prompt) handles the user input in order to place the symbols on the grid. When a player enters a number, `checkWin()` interates over the `board` object and `winningCombination` arrays incrementing the `symbolCount` when it finds a match. When the `symbolCount` hits 3, a winner is declared.
+
+* A seperate function, `checkDraw()`, iterates over the `board` object values to check for an empty string `" "`. If there are any empty string values it can not be draw.
+
+* The colours in the console is handled by a package called [`chalk`](https://www.npmjs.com/package/chalk)
+
+## Retro
+
+If I were to add further functionality to the app, I would integrate a score counter. The counter would increment each time a X's or 0's won a game. This could be further built out by asking the user how many games they would like to play before `playTurn()`. On reflection, if I were to refactor the code I would consider using a ForEach loop in my checking functions
+
 
