@@ -102,12 +102,13 @@ const playAgain = () => {
     console.log("Would you like to play again? Enter Y or N")
     prompt.start();
     prompt.get(['playAgain'], (error, result) => {
-        if (result.playAgain === 'Y'){
+        if (result.playAgain.toUpperCase() === 'Y'){
             resetBoard();
             console.log(chalk.green.bold(`\nExcellent, lets play again`))
             printBoard();
             playTurn( 'X' )
-        }else{
+        }
+        if(result.playAgain.toUpperCase() === 'N'){
             console.log(chalk.yellow.bold(`\nGoodbye Humans\n`))
             return
         }
@@ -124,13 +125,13 @@ const playTurn = ( player ) => {
             printBoard();
             
             if (checkWin( player )) {
-                console.log(chalk.black.bgYellow.bold(`**  ${player} Is The Winner!!  **`));
+                console.log(chalk.black.bgYellow.bold(`**  ${player} Is The Winner!!  **\n`));
                 playAgain();
                 return;
             }
 
             if(checkDrawn()){
-                console.log(chalk.black.bgRed.bold(`**  Thats a Draw! Great Game!  **`));
+                console.log(chalk.black.bgRed.bold(`**  Thats a Draw! Great Game!  **\n`));
                 playAgain();
                 return;
             }
@@ -141,7 +142,7 @@ const playTurn = ( player ) => {
                 playTurn( 'X' );
             }
         } else {
-            console.log(chalk.red.bold(`OOPS! Invalid Input, please enter a number 1-9 for an empty square on the board`));
+            console.log(chalk.red.bold(`OOPS! Invalid Input, please enter a number 1-9 for an empty square on the board\n`));
             playTurn( player );
         }
     });
