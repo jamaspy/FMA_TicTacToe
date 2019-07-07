@@ -88,5 +88,4 @@ O | X | O
 
 ## Retro
 
-If I were to add further functionality to the app, I would integrate a score counter. The counter would increment each time a X's or 0's won a game. This could be further built out by asking the user how many games they would like to play before `playTurn()`. By way of refactoring the code I would consider using a ForEach loop in my checking functions.
-
+If I were to add further functionality to the app, I would integrate a score counter. The counter would increment each time a X's or 0's won a game. This could be further built out by asking the user how many games they would like to play before `playTurn()`. By way of refactoring the code I would use more ES6 loops & array methods e.g ForEach loop in my checking functions; as well as implicitly returning more of my logic.
