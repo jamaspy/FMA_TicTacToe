@@ -128,7 +128,7 @@ const playTurn = ( player ) => {
 }
 
 //Start Game
-console.log(chalk.blue.bold(`\nWelcome To Future Makes Academy TicTacToe!`)) 
+console.log(chalk.blue.bold(`\nWelcome To Future Makers Academy TicTacToe!`)) 
 console.log(chalk.blue(`\nBelow Is A Diagram Of Your Board \nEnter A Number 1-9 To Place Your Symbols In The Corresponding Square.\nThe Aim Is To Get 3 In A Row - Vertically, Horizontally OR Diagonally \n\nX Always To Play First...`))
 
 console.log(`
