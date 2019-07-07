@@ -85,7 +85,7 @@ const checkWin = ( player ) => {
 }
 
 // Iterate over the board object to check for empty string values ("Empty Squares")
-// If there are empty sqaures it can not be a draw
+// If there are empty squares it can not be a draw
 const checkDrawn = () => {
     const values = Object.values(board);
     for (let i = 0; i < values.length; i++){
