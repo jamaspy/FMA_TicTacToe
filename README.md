@@ -80,7 +80,7 @@ O | X | O
 
 * I have focused on my functions having single responsibilities and naming my variables as descriptively as possible to make the code as readable and maintainable as possible. When the game starts, the individual functions are called in the main `playTurn()`. 
 
-* An a package called [`prompt`](https://www.npmjs.com/package/prompt) handles the user input in order to place the symbols on the grid. When a player enters a number, `checkWin()` iterates over the `board` object and `winningCombination` arrays incrementing the `symbolCount` when it finds a match. When the `symbolCount` hits 3, a winner is declared.
+* An a package called [`prompt`](https://www.npmjs.com/package/prompt) handles the user input in order to place the symbols on the grid. When a player enters a number, `checkWin()` iterates over the `board` object and `winningCombination` arrays. When it finds the input number appearing in a combination array, the `symbolCount` is incremented. When the `symbolCount` hits 3, a winner is declared.
 
 * A separate function, `checkDraw()`, iterates over the `board` object values to check for an empty string `" "`. If there are any empty string values it cannot be a draw.
 
