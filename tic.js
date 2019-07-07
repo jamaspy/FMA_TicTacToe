@@ -114,7 +114,8 @@ const playAgain = () => {
         }
     });
 }
-
+// Main game play function that uses the individual checking functions. 
+// If neither a win or draw are found, the function loops switching between players each time
 const playTurn = ( player ) => {
     console.log(chalk.green(`${player}'s Turn To Play`));
     prompt.start();
