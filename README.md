@@ -1,7 +1,12 @@
-# FMA_TicTacToe
-Command Line Tic Tac Toe Game
+# Command Line Tic Tac Toe
 
-# To Play
-### Download or Clone Repo & navigate to the directory from the command line
-### `npm install` to install dependencies
-### `node tic.js` to play the game
+## Assumptions
+* Basic Git Knowledge
+* Basic Command Line Knowledge
+* nodeJS installed 
+
+## How To Play
+
+## Rules Of The Game
+
+## How It Works
