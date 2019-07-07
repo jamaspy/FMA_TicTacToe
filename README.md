@@ -84,7 +84,7 @@ O | X | O
 
 * A separate function, `checkDraw()`, iterates over the `board` object values to check for an empty string `" "`. If there are any empty string values it cannot be a draw.
 
-* The colours in the console is handled by a package called [`chalk`](https://www.npmjs.com/package/chalk).
+* The colours in the console are handled by a package called [`chalk`](https://www.npmjs.com/package/chalk).
 
 ## Retro
 
