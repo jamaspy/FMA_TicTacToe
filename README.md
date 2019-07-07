@@ -1,6 +1,7 @@
 # Command Line Tic Tac Toe
 
 ## Assumptions
+
 In order to play this game you will need:
 * [Basic Git Knowledge](https://guides.github.com/activities/hello-world/)
 * [Basic Command Line Knowledge](https://www.learnenough.com/command-line-tutorial/basics)
@@ -9,6 +10,7 @@ In order to play this game you will need:
 If you do not feel comfortable with any of the above, click on the links to learn more about them.
 
 ## How To Play
+
 Once you are up to speed with the assumptions
 1) Open your preferred command line application 
     * For mac I recommend [iTerm](https://www.iterm2.com/downloads.html)
@@ -25,7 +27,6 @@ Once you are up to speed with the assumptions
 6) To play the game type `npm run game`, press `enter` and you are playing
 
 7) Use the numbers keys `1-9` to place symbols on the corresponding square on the grid
-
 
 ## Rules Of The Game
 
@@ -78,7 +79,7 @@ O | X | O
 
 * The board is simulated by an object with numerical keys (1-9) and empty string values (empty squares). There are 8 possible 'winning combinations' in a 3 x 3 game of tic tac toe. The combinations are stored as arrays in an array.
 
-* I have focused on my functions having single responsibilities and naming my variables as descriptively as possible to make the code as readable and maintainable as possible. When the game starts, the individual functions are called in the main `playTurn()`. 
+* I have focused on my functions having single responsibilities and naming my variables as descriptively as possible to make the code as readable and maintainable as possible. When the game starts, the individual functions are called in the main `playTurn()`.
 
 * An a package called [`prompt`](https://www.npmjs.com/package/prompt) handles the user input in order to place the symbols on the grid. When a player enters a number, `checkWin()` iterates over the `board` object and `winningCombination` arrays. When it finds the input number appearing in a combination array, the `symbolCount` is incremented. When the `symbolCount` hits 3, a winner is declared.
 
