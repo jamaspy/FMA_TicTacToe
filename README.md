@@ -14,17 +14,17 @@ Once you are up to speed with the assumptions
     * For mac I recommend [iTerm](https://www.iterm2.com/downloads.html)
     * For Windows, click `Start` and type `cmd`. Open the `Command Prompt`
     
-2) Navigate to the directory where you would like to clone the game to. E.g `cd username/cool_games`
+2) Navigate to the directory where you would like to clone the game too. E.g `cd username/cool_games`
 
 3) Type `git clone https://github.com/jamaspy/FMA_TicTacToe` and hit `enter`
 
 4) Navigate into the new directory by typing `cd FMA_TicTacToe` and hitting `enter`
 
-5) Nearly there, now to setup the dependencies type `npm install` and hit `enter`
+5) Nearly there, now to set up the dependencies type `npm install` and hit `enter`
 
 6) To play the game type `npm run game`, press `enter` and you are playing
 
-7) Use the numbers keys `1-9` to place symbols on the corresponding sqaure on the grid
+7) Use the numbers keys `1-9` to place symbols on the corresponding square on the grid
 
 
 ## Rules Of The Game
@@ -80,14 +80,13 @@ O | X | O
 
 * I have focused on my functions having single responsibilities and naming my variables as descriptively as possible to make the code as readable and maintainable as possible. When the game starts, the individual functions are called in the main `playTurn()`. 
 
-* An a packge called [`prompt`](https://www.npmjs.com/package/prompt) handles the user input in order to place the symbols on the grid. When a player enters a number, `checkWin()` interates over the `board` object and `winningCombination` arrays incrementing the `symbolCount` when it finds a match. When the `symbolCount` hits 3, a winner is declared.
+* An a package called [`prompt`](https://www.npmjs.com/package/prompt) handles the user input in order to place the symbols on the grid. When a player enters a number, `checkWin()` iterates over the `board` object and `winningCombination` arrays incrementing the `symbolCount` when it finds a match. When the `symbolCount` hits 3, a winner is declared.
 
-* A seperate function, `checkDraw()`, iterates over the `board` object values to check for an empty string `" "`. If there are any empty string values it can not be draw.
+* A separate function, `checkDraw()`, iterates over the `board` object values to check for an empty string `" "`. If there are any empty string values it cannot be a draw.
 
-* The colours in the console is handled by a package called [`chalk`](https://www.npmjs.com/package/chalk)
+* The colours in the console are handled by a package called [`chalk`](https://www.npmjs.com/package/chalk).
 
 ## Retro
 
-If I were to add further functionality to the app, I would integrate a score counter. The counter would increment each time a X's or 0's won a game. This could be further built out by asking the user how many games they would like to play before `playTurn()`. On reflection, if I were to refactor the code I would consider using a ForEach loop in my checking functions
-
+If I were to add further functionality to the app, I would integrate a score counter. The counter would increment each time a X's or 0's won a game. This could be further built out by asking the user how many games they would like to play before `playTurn()`. By way of refactoring the code I would consider using a ForEach loop in my checking functions.
 
